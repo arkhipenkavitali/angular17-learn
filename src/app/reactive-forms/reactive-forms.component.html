@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header">Reactive form</div>
+  <div class="card-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="off">
+      <div>
+        <label for="name">Your name</label>
+        <input type="text" name="name" id="name" placeholder="Your name" formControlName="name">
+        @if(registerForm.get('name')?.hasError('required') && registerForm.get('name')?.touched){
+          <div>Name is required</div>
+        }
+      </div>
+      <div>
+        <label for="email">Your email</label>
+        <input type="text" name="email" id="email" placeholder="Your email" formControlName="email">
+        @if(registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched){
+          <div>Email is required</div>
+        }
+      </div>
+      <div>
+        <label for="password">Your password</label>
+        <input type="password" name="password" id="password" placeholder="Password" formControlName="password">
+        @if(registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched){
+          <div>Password is required</div>
+        }
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
